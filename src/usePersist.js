@@ -9,7 +9,6 @@ export function usePersistedReducer(
   [state, dispatch],
   key = "productionHouse"
 ) {
-  console.log("persisten", state);
   useEffect(() => localStorage.setItem(key, JSON.stringify(state)), [state]);
   return [state, dispatch];
 }

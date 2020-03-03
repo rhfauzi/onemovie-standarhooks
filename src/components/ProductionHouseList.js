@@ -16,30 +16,32 @@ export default function TodoList() {
 
   const [modal, setModal] = useState(false);
   const [dataEdit, setDataEdit] = useState("");
+  const [id, setId] = useState("");
+  const [name, setName] = useState("");
 
   const toggle = value => {
     setModal(!modal);
     setDataEdit(value);
-    console.log("dataEdit", dataEdit);
+    setId(value.id);
+    setName(value.name);
+  };
+  const handleChangeName = event => {
+    setName(event);
   };
 
-  const handleChange = event => {
-    console.log("handleChange", event);
-    // setDataEdit(event.target.value);
+  const handleEditProductionHouse = event => {
+    let data = { id: id, name: name };
 
-    setDataEdit(prev => {
-      prev.values.name = event;
+    dispatch({
+      type: "EDIT_PRODUCTION_HOUSE",
+      payload: data
     });
-
-    console.log("handleChange dataEdit", dataEdit);
+    setModal(!modal);
   };
 
   const handleDelete = event => {
-    console.log("state", state);
     const oldData = JSON.parse(localStorage.getItem("productionHouse"));
-    console.log("oldData", oldData);
     const filterData = oldData.data.filter(item => item.id !== event);
-    console.log("filterData", filterData);
 
     let newData = {
       data: filterData.map(item => ({
@@ -47,7 +49,6 @@ export default function TodoList() {
         name: item.name
       }))
     };
-    // let convert = JSON.stringify(filterData);
 
     dispatch({
       type: "DELETE_PRODUCTION_HOUSE",
@@ -57,33 +58,14 @@ export default function TodoList() {
     setModal(!modal);
   };
 
-  const handleEditProductionHouse = event => {
-    console.log("input neme", event);
-    // let oldData = JSON.parse(localStorage.getItem("productionHouse"));
-    // let data = { id: oldData.data.length + 1, name: dataEdit };
-    // // console.log("add data", data);
-
-    dispatch({
-      type: "EDIT_PRODUCTION_HOUSE",
-      payload: dataEdit
-    });
-    // setDataEdit("");
-    // setModal(!modal);
-  };
-
-  //   console.log("state data", state.data);
   return (
     <Fragment>
       {state.data !== undefined
         ? state.data.map((value, index) => {
             return (
               <Fragment key={index}>
-                {/* <Button
-                  className="color-primary"
-                  onClick={() => modalEditProduction(index)}
-                > */}
                 <Button className="color-primary" onClick={() => toggle(value)}>
-                  index : {index} no : {value.id} name : {value.name}
+                  {value.name}
                 </Button>
               </Fragment>
             );
@@ -91,25 +73,18 @@ export default function TodoList() {
         : "No Production House"}
 
       <Modal isOpen={modal} toggle={toggle}>
-        {/* <Modal isOpen={modal.openEditModal} itemID={modal.activeItemId}> */}
         <ModalHeader style={{ textAlign: "center" }}>
-          {/* Edit Production House */}
           Edit Production House
         </ModalHeader>
         <ModalBody>
           <FormGroup>
-            <Label>
-              Production House Name {dataEdit !== undefined ? dataEdit.id : ""}
-            </Label>
+            <Label>Production House Name</Label>
             <Input
               type="text"
               name="name"
-              //   value={dataEdit !== undefined ? dataEdit.name : ""}
-              value={dataEdit.name}
+              value={name}
               autoFocus={true}
-              // onKeyUp={handleSubmitForm}
-              //   onChange={handleChange}
-              onChange={event => handleChange(event.currentTarget.value)}
+              onChange={event => handleChangeName(event.currentTarget.value)}
               placeholder="Enter Production House Name"
             />
           </FormGroup>

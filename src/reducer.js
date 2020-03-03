@@ -17,10 +17,7 @@ export default function reducer(state, action) {
       };
 
     case "EDIT_PRODUCTION_HOUSE":
-      // console.log("state", state);
-      // console.log("action", action);
       console.log("action payload", action.payload);
-      // console.log("action payload id", action.payload.id);
 
       const stateCopy = state.data.map(item => {
         if (item.id === action.payload.id) {
@@ -35,9 +32,6 @@ export default function reducer(state, action) {
         return item;
       });
       console.log("stateCopy", stateCopy);
-
-      // localStorage.setItem('productionHouse',JSON.stringify(stateCopy));
-      // return stateCopy;
 
       return {
         data: stateCopy
