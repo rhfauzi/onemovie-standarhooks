@@ -58,39 +58,7 @@ function App() {
 
               <Col md={12} sm={12} xs={12} className="movie-box">
                 <Row>
-                  <Col md={3} sm={3} xs={6} className="movie">
-                    <div className="inner color-secondary">
-                      <h1>Movie Title</h1>
-                      <div className="genre">Genre</div>
-                      <div className="production-house">Production House</div>
-                      <div className="ratings">Age Film ratings</div>
-                    </div>
-                  </Col>
-
-                  <Col md={3} sm={3} xs={6} className="movie">
-                    <div className="inner color-secondary">
-                      <h1>Movie Title</h1>
-                      <div className="genre">Genre</div>
-                      <div className="production-house">Production House</div>
-                      <div className="ratings">Age Film ratings</div>
-                    </div>
-                  </Col>
-                  <Col md={3} sm={3} xs={6} className="movie">
-                    <div className="inner color-secondary">
-                      <h1>Movie Title</h1>
-                      <div className="genre">Genre</div>
-                      <div className="production-house">Production House</div>
-                      <div className="ratings">Age Film ratings</div>
-                    </div>
-                  </Col>
-                  <Col md={3} sm={3} xs={6} className="movie">
-                    <div className="inner color-secondary">
-                      <h1>Movie Title</h1>
-                      <div className="genre">Genre</div>
-                      <div className="production-house">Production House</div>
-                      <div className="ratings">Age Film ratings</div>
-                    </div>
-                  </Col>
+                  <MovieList />
                 </Row>
               </Col>
             </Row>

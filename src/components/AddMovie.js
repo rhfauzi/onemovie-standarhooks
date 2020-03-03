@@ -20,8 +20,6 @@ export default function AddMovie() {
   const toggle = () => setModal(!modal);
   const [modal, setModal] = useState(false);
 
-  // const [dataMovie, setDataMovie] = useState([]);
-
   const { value: movie, bind: bindMovie, reset: resetMovie } = useInput("");
   const { value: genre, bind: bindGenre, reset: resetGenre } = useInput("");
   const { value: rating, bind: bindRating, reset: resetRating } = useInput("");
@@ -29,7 +27,6 @@ export default function AddMovie() {
 
   const handleSelect = event => {
     setProductionName(event.target.value);
-    console.log("event", event.target.value);
   };
 
   const handleSubmit = event => {
@@ -37,11 +34,6 @@ export default function AddMovie() {
     if (productionHouseId === "") {
       alert("Select Production House Name");
     } else {
-      // console.log("name", movie);
-      // console.log("genre", genre);
-      // console.log("rating", rating);
-      //   console.log("select", productionHouseId);
-
       let oldData = JSON.parse(localStorage.getItem("productionHouse"));
       let data = {
         id: oldData.movie.length + 1,
@@ -59,10 +51,11 @@ export default function AddMovie() {
       resetMovie();
       resetGenre();
       resetRating();
+      setModal(!modal);
     }
   };
 
-  console.log("state", state.movie);
+  // console.log("state", state.movie);
 
   return (
     <div className="row">

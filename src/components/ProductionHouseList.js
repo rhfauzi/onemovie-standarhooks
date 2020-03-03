@@ -20,10 +20,10 @@ export default function TodoList() {
   const [name, setName] = useState("");
 
   const toggle = value => {
-    setModal(!modal);
     setDataEdit(value);
     setId(value.id);
     setName(value.name);
+    setModal(!modal);
   };
   const handleChangeName = event => {
     setName(event);

@@ -1,112 +1,239 @@
 .color-primary {
-    background: #004c8c !important;
+  background: #004c8c !important;
 }
 
 .color-secondary {
-    background: #0176bd !important;
+  background: #0176bd !important;
 }
 
 .nav-onemovie {
-    width: 100%;
-    z-index: 1;
-    background: white;
-    margin-bottom: 30px;
-    box-shadow: 0px 3px 17px 0px #bbbbbb;
-    position: fixed !important;
+  width: 100%;
+  z-index: 1;
+  background: white;
+  margin-bottom: 30px;
+  box-shadow: 0px 3px 17px 0px #bbbbbb;
+  position: fixed !important;
 }
 
 .home {
-    margin-top: 30px;
+  margin-top: 30px;
 }
 
 .header-menu {
-    background-color: #eff6fe;
-    padding: 40px 0px;
-    margin-top: 10vh !important;
+  background-color: #eff6fe;
+  padding: 40px 0px;
+  margin-top: 10vh !important;
 }
 
 .home h3 {
-    font-weight: bold;
-    color: #616161;
+  font-weight: bold;
+  color: #616161;
 }
 
 button.btn-movie {
-    background: #004c8c;
-    padding: 10px 10px;
-    font-size: 21px;
-    flex: 1;
-    margin: 0px 10px;
-    border-radius: 10px;
+  background: #004c8c;
+  padding: 10px 10px;
+  font-size: 21px;
+  flex: 1;
+  margin: 0px 10px;
+  border-radius: 10px;
 }
 
 button.btn-movie:hover {
-    background: #000000 !important;
+  background: #000000 !important;
 }
 
 .secound-menu {
-    padding: 20px 0px;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: inherit;
+  padding: 20px 0px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: inherit;
 }
 
 .secound-menu button {
-    padding: 20px 20px;
-    font-size: 18px;
-    flex: 1;
-    margin: 10px;
-    border-radius: 10px;
-    border: none;
-    color: white;
-    min-width: 200px !important;
+  padding: 20px 20px;
+  font-size: 18px;
+  flex: 1;
+  margin: 10px;
+  border-radius: 10px;
+  border: none;
+  color: white;
+  min-width: 200px !important;
 }
 
 .secound-menu button:hover {
-    background: black !important;
+  background: black !important;
 }
 
 .container-movie {
-    width: 100%;
+  width: 100%;
 }
 
 .movie-box {
-    height: 300px;
-    margin: 20px 0px;
+  height: 300px;
+  margin: 20px 0px;
 }
 
 .movie-box .movie {
-    width: 100%;
+  width: 100%;
+}
+.movie-box .movie a {
+  text-decoration: none;
 }
 
 .movie-box .movie .inner {
-    width: 100%;
-    color: white;
-    padding: 10px;
-    border-radius: 10px;
-    margin-bottom: 30px;
+  width: 100%;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+}
+
+.movie-box .movie .inner:hover {
+  background: black !important;
 }
 
 .movie-box .movie .inner h1 {
-    width: 100%;
-    font-weight: bolder;
-    font-size: 21px;
+  width: 100%;
+  font-weight: bolder;
+  font-size: 21px;
 }
 
 .movie-box .movie .inner .genre {
-    font-size: 14px;
-    margin-bottom: 10px;
+  font-size: 14px;
+  margin-bottom: 10px;
 }
 
 .movie-box .movie .inner .production-house {
-    font-size: 14px;
-    margin-bottom: 10px;
+  font-size: 14px;
+  margin-bottom: 10px;
 }
 
 .movie-box .movie .inner .ratings {
-    font-size: 14px;
-    font-weight: bolder;
+  font-size: 14px;
+  font-weight: bolder;
 }
 
 .important {
-    color: red;
+  color: red;
+}
+.color-primary {
+  background: #004c8c !important;
+}
+
+.color-secondary {
+  background: #0176bd !important;
+}
+
+.nav-onemovie {
+  width: 100%;
+  z-index: 1;
+  background: white;
+  margin-bottom: 30px;
+  box-shadow: 0px 3px 17px 0px #bbbbbb;
+  position: fixed !important;
+}
+
+.home {
+  margin-top: 30px;
+}
+
+.header-menu {
+  background-color: #eff6fe;
+  padding: 40px 0px;
+  margin-top: 10vh !important;
+}
+
+.home h3 {
+  font-weight: bold;
+  color: #616161;
+  overflow-wrap: break-word;
+}
+
+button.btn-movie {
+  background: #004c8c;
+  padding: 10px 10px;
+  font-size: 21px;
+  flex: 1;
+  margin: 0px 10px;
+  border-radius: 10px;
+}
+
+button.btn-movie:hover {
+  background: #000000 !important;
+}
+
+.secound-menu {
+  padding: 20px 0px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: inherit;
+}
+
+.secound-menu button {
+  padding: 20px 20px;
+  font-size: 18px;
+  flex: 1;
+  margin: 10px;
+  border-radius: 10px;
+  border: none;
+  color: white;
+  min-width: 200px !important;
+}
+
+.secound-menu button:hover {
+  background: black !important;
+}
+
+.container-movie {
+  width: 100%;
+}
+
+.movie-box {
+  height: 300px;
+  margin: 20px 0px;
+}
+
+.movie-box .movie {
+  width: 100%;
+}
+.movie-box .movie a {
+  text-decoration: none;
+}
+
+.movie-box .movie .inner {
+  width: 100%;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+}
+
+.movie-box .movie .inner:hover {
+  background: black !important;
+}
+
+.movie-box .movie .inner h1 {
+  width: 100%;
+  font-weight: bolder;
+  font-size: 21px;
+}
+
+.movie-box .movie .inner .genre {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.movie-box .movie .inner .production-house {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.movie-box .movie .inner .ratings {
+  font-size: 14px;
+  font-weight: bolder;
+}
+
+.important {
+  color: red;
 }
