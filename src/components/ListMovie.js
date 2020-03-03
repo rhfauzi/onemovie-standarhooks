@@ -14,6 +14,7 @@ import {
 } from "reactstrap";
 import Store from "../context/productionHouse";
 import { useInput } from "../hooks/input-hook";
+import Swal from "sweetalert2";
 
 function MovieList() {
   const { state, dispatch } = useContext(Store);
@@ -57,44 +58,79 @@ function MovieList() {
 
   const handleSubmit = event => {
     event.preventDefault();
-
-    let data = {
-      id: id,
-      movie: movie,
-      genre: genre,
-      rating: rating,
-      productionHouseId: productionHouseId
-    };
-
-    dispatch({
-      type: "EDIT_MOVIE",
-      payload: data
-    });
-
-    resetMovie();
-    resetGenre();
-    resetRating();
     setModal(!modal);
+
+    Swal.fire({
+      position: "top-end",
+      title: "Edit Movie Success",
+      showConfirmButton: false,
+      timer: 1000
+    }).then(result => {
+      let data = {
+        id: id,
+        movie: movie,
+        genre: genre,
+        rating: rating,
+        productionHouseId: productionHouseId
+      };
+
+      dispatch({
+        type: "EDIT_MOVIE",
+        payload: data
+      });
+
+      resetMovie();
+      resetGenre();
+      resetRating();
+    });
   };
   const handleSelect = event => {
     setProductionHouseId(event.target.value);
   };
+
+  const handleDelete = event => {
+    setModal(!modal);
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You are about to delete a production house. This cannot be undone",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, delete it!",
+      cancelButtonText: "Cancel",
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6"
+    }).then(result => {
+      if (result.value) {
+        // let sendData = { id: id, name: name };
+
+        dispatch({
+          type: "DELETE_MOVIE",
+          payload: id
+        });
+
+        Swal.fire({
+          position: "top-end",
+          // icon: 'success',
+          title: "Delete Movie Success",
+          showConfirmButton: false,
+          timer: 4500
+        });
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire("Cancelled", "Your imaginary file is safe :)", "error");
+      }
+    });
+  };
+
   const getProductionHousName = event => {
-    console.log("getProductionHousName");
-    console.log("event", event);
     const dataName = state.data.map((item, index) => {
-      console.log(`item.id ${item.id} event ${event}`);
       if (item.id === event) {
         return item.name;
       }
     });
-    console.log("dataName", dataName);
     //belum jadi
     return "Production House (not finis yet)";
   };
 
-  // console.log("id zzzzz", id);
-  // console.log("productionHouseId zzzzz", productionHouseId);
   return (
     <Fragment>
       {state.movie !== undefined
@@ -204,9 +240,9 @@ function MovieList() {
             <Button
               color="danger"
               className="float-left"
-              // onClick={() => handleDelete(id)}
+              onClick={() => handleDelete(id)}
 
-              onClick={() => dispatch({ type: "DELETE_MOVIE", payload: id })}
+              // onClick={() => dispatch({ type: "DELETE_MOVIE", payload: id })}
             >
               Delete
             </Button>

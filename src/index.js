@@ -57,7 +57,7 @@ function App() {
               </Col>
 
               <Col md={12} sm={12} xs={12} className="movie-box">
-                <Row>
+                <Row className="justify-content-center">
                   <ListMovie />
                 </Row>
               </Col>

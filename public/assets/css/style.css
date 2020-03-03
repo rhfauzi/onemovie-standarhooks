@@ -62,6 +62,8 @@ button.btn-movie:hover {
   padding: 10px;
   border-radius: 10px;
   margin-bottom: 30px;
+  height: 150px;
+  overflow: hidden;
 }
 
 .movie-box .movie .inner:hover {

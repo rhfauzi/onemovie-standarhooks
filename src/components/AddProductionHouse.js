@@ -10,6 +10,7 @@ import {
   Label,
   Input
 } from "reactstrap";
+import Swal from "sweetalert2";
 
 export default function AddProductionHouse() {
   const toggle = () => setModal(!modal);
@@ -23,16 +24,23 @@ export default function AddProductionHouse() {
   }
 
   function handleAddProductionHouse() {
-    let oldData = JSON.parse(localStorage.getItem("productionHouse"));
-    let data = { id: oldData.data.length + 1, name: name };
-    // console.log("add data", data);
-
-    dispatch({
-      type: "ADD_PRODUCTION_HOUSE",
-      payload: data
-    });
-    setName("");
     setModal(!modal);
+
+    Swal.fire({
+      position: "top-end",
+      title: "Add Production House Success",
+      showConfirmButton: false,
+      timer: 1000
+    }).then(result => {
+      let oldData = JSON.parse(localStorage.getItem("productionHouse"));
+      let data = { id: oldData.data.length + 1, name: name };
+
+      dispatch({
+        type: "ADD_PRODUCTION_HOUSE",
+        payload: data
+      });
+      setName("");
+    });
   }
 
   function handleSubmitForm(event) {

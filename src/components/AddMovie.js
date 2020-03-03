@@ -13,6 +13,7 @@ import {
   Form
 } from "reactstrap";
 import { useInput } from "../hooks/input-hook";
+import Swal from "sweetalert2";
 
 export default function AddMovie() {
   const { state, dispatch } = useContext(Store);
@@ -34,24 +35,31 @@ export default function AddMovie() {
     if (productionHouseId === "" || productionHouseId === "null") {
       alert("Select Production House Name");
     } else {
-      let oldData = JSON.parse(localStorage.getItem("productionHouse"));
-      let data = {
-        id: oldData.movie.length + 1,
-        movie: movie,
-        genre: genre,
-        rating: rating,
-        productionHouseId: productionHouseId
-      };
-
-      dispatch({
-        type: "ADD_MOVIE",
-        payload: data
-      });
-
-      resetMovie();
-      resetGenre();
-      resetRating();
       setModal(!modal);
+      Swal.fire({
+        position: "top-end",
+        title: "Add Production House Success",
+        showConfirmButton: false,
+        timer: 1000
+      }).then(result => {
+        let oldData = JSON.parse(localStorage.getItem("productionHouse"));
+        let data = {
+          id: oldData.movie.length + 1,
+          movie: movie,
+          genre: genre,
+          rating: rating,
+          productionHouseId: productionHouseId
+        };
+
+        dispatch({
+          type: "ADD_MOVIE",
+          payload: data
+        });
+
+        resetMovie();
+        resetGenre();
+        resetRating();
+      });
     }
   };
 

@@ -10,6 +10,7 @@ import {
   Label,
   Input
 } from "reactstrap";
+import Swal from "sweetalert2";
 
 export default function TodoList() {
   const { state, dispatch } = useContext(Store);
@@ -30,24 +31,52 @@ export default function TodoList() {
   };
 
   const handleEditProductionHouse = event => {
-    let data = { id: id, name: name };
-
-    dispatch({
-      type: "EDIT_PRODUCTION_HOUSE",
-      payload: data
-    });
     setModal(!modal);
+    Swal.fire({
+      position: "top-end",
+      title: "Change Production House Success",
+      showConfirmButton: false,
+      timer: 1000
+    }).then(result => {
+      let data = { id: id, name: name };
+
+      dispatch({
+        type: "EDIT_PRODUCTION_HOUSE",
+        payload: data
+      });
+    });
   };
 
   const handleDelete = event => {
-    let sendData = { id: id, name: name };
-
-    dispatch({
-      type: "DELETE_PRODUCTION_HOUSE",
-      payload: sendData
-    });
-
     setModal(!modal);
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You are about to delete a production house. This cannot be undone",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, delete it!",
+      cancelButtonText: "Cancel",
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6"
+    }).then(result => {
+      if (result.value) {
+        let sendData = { id: id, name: name };
+
+        dispatch({
+          type: "DELETE_PRODUCTION_HOUSE",
+          payload: sendData
+        });
+
+        Swal.fire({
+          position: "top-end",
+          title: "Delete Production House Success",
+          showConfirmButton: false,
+          timer: 3000
+        });
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire("Cancelled", "Your imaginary file is safe :)", "error");
+      }
+    });
   };
 
   return (
