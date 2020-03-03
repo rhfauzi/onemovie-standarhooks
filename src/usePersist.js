@@ -10,6 +10,8 @@ export function usePersistedContext(context, key) {
 // }
 
 export function usePersistedReducer([state, dispatch], key) {
+  console.log("usePersistedReducer");
+  console.log("key", key);
   useEffect(() => localStorage.setItem(key, JSON.stringify(state)), [state]);
   return [state, dispatch];
 }

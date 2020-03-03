@@ -12,6 +12,7 @@ import { usePersistedContext, usePersistedReducer } from "./usePersist";
 import ProductionHouseList from "./components/ProductionHouseList";
 import AddProductionHouse from "./components/AddProductionHouse";
 import AddMovie from "./components/AddMovie";
+import MovieList from "./components/MovieList";
 
 function App() {
   const storeProductionHouse = usePersistedContext(

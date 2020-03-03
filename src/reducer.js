@@ -37,6 +37,16 @@ export default function reducer(state, action) {
         data: stateCopy
       };
 
+    case "ADD_MOVIE":
+      // return current state if empty
+      console.log("state", state);
+      console.log("action", action);
+
+      return {
+        ...state,
+        movie: [...state.movie, action.payload]
+      };
+
     default:
       return state;
   }

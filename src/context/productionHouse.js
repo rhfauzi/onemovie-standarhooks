@@ -21,6 +21,22 @@ const Store = React.createContext({
   data: [
     { id: 1, name: "Md Entertaiment" },
     { id: 2, name: "Screenplay Productions" }
+  ],
+  movie: [
+    {
+      id: 1,
+      movie: "Spider Man",
+      genre: "Action",
+      rating: "G-General Audiences",
+      productionHouseId: 1
+    },
+    {
+      id: 2,
+      movie: "Bat Man",
+      genre: "Action",
+      rating: "G-General Audiences",
+      productionHouseId: 1
+    }
   ]
 });
 
