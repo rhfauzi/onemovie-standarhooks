@@ -40,19 +40,11 @@ export default function TodoList() {
   };
 
   const handleDelete = event => {
-    const oldData = JSON.parse(localStorage.getItem("productionHouse"));
-    const filterData = oldData.data.filter(item => item.id !== event);
-
-    let newData = {
-      data: filterData.map(item => ({
-        id: item.id,
-        name: item.name
-      }))
-    };
+    let sendData = { id: id, name: name };
 
     dispatch({
       type: "DELETE_PRODUCTION_HOUSE",
-      payload: newData
+      payload: sendData
     });
 
     setModal(!modal);

@@ -12,9 +12,22 @@ export default function reducer(state, action) {
       };
 
     case "DELETE_PRODUCTION_HOUSE":
+      let newDataDelete = [];
+      const dataDelete = state.data.filter((event, index) => {
+        if (index + 1 !== action.payload.id) {
+          let data = {
+            id: action.payload.id,
+            name: action.payload.name
+          };
+
+          newDataDelete.push(data);
+          return newDataDelete;
+        }
+      });
+
       return {
         ...state,
-        data: action.payload.data
+        data: dataDelete
       };
 
     case "EDIT_PRODUCTION_HOUSE":
@@ -57,6 +70,22 @@ export default function reducer(state, action) {
       return {
         ...state,
         movie: dataFilter
+      };
+
+    case "EDIT_MOVIE":
+      const getData = state.movie.map(item => {
+        if (item.id === action.payload.id) {
+          item.id = action.payload.id;
+          item.movie = action.payload.movie;
+          item.genre = action.payload.genre;
+          item.productionHouseId = action.payload.productionHouseId;
+        }
+        return item;
+      });
+
+      return {
+        ...state,
+        movie: getData
       };
 
     default:

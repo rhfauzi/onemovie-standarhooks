@@ -31,7 +31,7 @@ export default function AddMovie() {
 
   const handleSubmit = event => {
     event.preventDefault();
-    if (productionHouseId === "") {
+    if (productionHouseId === "" || productionHouseId === "null") {
       alert("Select Production House Name");
     } else {
       let oldData = JSON.parse(localStorage.getItem("productionHouse"));

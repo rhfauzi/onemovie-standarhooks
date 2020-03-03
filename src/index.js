@@ -9,10 +9,10 @@ import NavBar from "./components/NavBar";
 
 import { usePersistedContext, usePersistedReducer } from "./usePersist";
 
-import ProductionHouseList from "./components/ProductionHouseList";
+import ListProductionHouse from "./components/ListProductionHouse";
 import AddProductionHouse from "./components/AddProductionHouse";
 import AddMovie from "./components/AddMovie";
-import MovieList from "./components/MovieList";
+import ListMovie from "./components/ListMovie";
 
 function App() {
   const storeProductionHouse = usePersistedContext(
@@ -40,7 +40,7 @@ function App() {
                 <AddProductionHouse />
               </Col>
               <Col md={12} sm={12} xs={12} className="secound-menu">
-                <ProductionHouseList />
+                <ListProductionHouse />
               </Col>
             </Row>
           </Container>
@@ -58,7 +58,7 @@ function App() {
 
               <Col md={12} sm={12} xs={12} className="movie-box">
                 <Row>
-                  <MovieList />
+                  <ListMovie />
                 </Row>
               </Col>
             </Row>

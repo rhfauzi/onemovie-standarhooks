@@ -28,7 +28,7 @@ const Store = React.createContext({
       movie: "Spider Man",
       genre: "Action",
       rating: "G-General Audiences",
-      productionHouseId: 1
+      productionHouseId: 2
     },
     {
       id: 2,
@@ -36,6 +36,13 @@ const Store = React.createContext({
       genre: "Action",
       rating: "G-General Audiences",
       productionHouseId: 1
+    },
+    {
+      id: 3,
+      movie: "Super Man",
+      genre: "Action",
+      rating: "G-General Audiences",
+      productionHouseId: 2
     }
   ]
 });

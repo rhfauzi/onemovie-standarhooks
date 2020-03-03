@@ -20,40 +20,94 @@ function MovieList() {
 
   const [modal, setModal] = useState(false);
 
-  const { value: movie, bind: bindMovie, reset: resetMovie } = useInput("");
-  const { value: genre, bind: bindGenre, reset: resetGenre } = useInput("");
-  const { value: rating, bind: bindRating, reset: resetRating } = useInput("");
-  const [productionHouseId, setProductionName] = useState("");
+  const {
+    value: movie,
+    setValue: setMovie,
+    bind: bindMovie,
+    reset: resetMovie
+  } = useInput("");
+  const {
+    value: genre,
+    setValue: setGenre,
+    bind: bindGenre,
+    reset: resetGenre
+  } = useInput("");
+  const {
+    value: rating,
+    setValue: setRating,
+    bind: bindRating,
+    reset: resetRating
+  } = useInput("");
+  const [productionHouseId, setProductionHouseId] = useState("");
   const [id, setId] = useState("");
 
   const toggle = value => {
     setId(value.id);
     setModal(!modal);
+
+    state.movie.filter((event, index) => {
+      if (index !== value.id) {
+        setMovie(value.movie);
+        setGenre(value.genre);
+        setRating(value.rating);
+        setProductionHouseId(value.productionHouseId);
+      }
+    });
   };
 
   const handleSubmit = event => {
+    event.preventDefault();
+
+    let data = {
+      id: id,
+      movie: movie,
+      genre: genre,
+      rating: rating,
+      productionHouseId: productionHouseId
+    };
+
+    dispatch({
+      type: "EDIT_MOVIE",
+      payload: data
+    });
+
     resetMovie();
     resetGenre();
     resetRating();
     setModal(!modal);
   };
   const handleSelect = event => {
-    setProductionName(event.target.value);
+    setProductionHouseId(event.target.value);
+  };
+  const getProductionHousName = event => {
+    console.log("getProductionHousName");
+    console.log("event", event);
+    const dataName = state.data.map((item, index) => {
+      console.log(`item.id ${item.id} event ${event}`);
+      if (item.id === event) {
+        return item.name;
+      }
+    });
+    console.log("dataName", dataName);
+    //belum jadi
+    return "Production House (not finis yet)";
   };
 
-  // console.log("state", state);
+  // console.log("id zzzzz", id);
+  // console.log("productionHouseId zzzzz", productionHouseId);
   return (
     <Fragment>
       {state.movie !== undefined
         ? state.movie.map((value, index) => {
             return (
-              <Col md={3} sm={6} xs={6} className="movie" key={index}>
+              <Col md={3} sm={6} xs={12} className="movie" key={index}>
                 <a href="/#" onClick={() => toggle(value)}>
                   <div className="inner color-secondary">
                     <h1>{value.movie}</h1>
                     <div className="genre">{value.genre}</div>
                     <div className="production-house">
-                      {value.productionHouseId}
+                      {getProductionHousName(value.productionHouseId)}
+                      {/* {value.productionHouseId} */}
                     </div>
                     <div className="ratings">{value.rating}</div>
                   </div>
@@ -77,22 +131,41 @@ function MovieList() {
                 <Input
                   type="text"
                   name="movie"
+                  value={movie}
                   {...bindMovie}
                   placeholder="Enter Movie Name"
                 />
               </FormGroup>
 
-              <FormGroup className="col-md-6 col-sm-6">
+              <FormGroup className="col-md-6 col-sm-6 col-xs-12">
                 <Label>
                   Production House Name <b className="important">*</b>
                 </Label>
-                <Input type="select" name="production" onChange={handleSelect}>
+                <Input
+                  type="select"
+                  name="production"
+                  onChange={handleSelect}
+                  defaultValue={productionHouseId}
+                >
                   <option value="null">Select Production House Name </option>
                   {state.data !== undefined
                     ? state.data.map((item, index) => {
                         return (
                           <Fragment key={index}>
-                            <option value={item.id}>{item.name}</option>
+                            {productionHouseId !== undefined &&
+                            productionHouseId === item.id ? (
+                              <option
+                                value={item.id}
+                                defaultValue={productionHouseId}
+                              >
+                                {item.name}
+                              </option>
+                            ) : (
+                              <option value={item.id}>{item.name}</option>
+                            )}
+                            {/* {if(productionHouseId !== undefined && productionHouseId === item.id){
+                              
+                            }} */}
                           </Fragment>
                         );
                       })
@@ -107,8 +180,9 @@ function MovieList() {
                 <Input
                   type="text"
                   name="genre"
+                  value={genre}
                   {...bindGenre}
-                  placeholder="Enter Movie Genre"
+                  placeholder="Enter Movie genre"
                 />
               </FormGroup>
 
@@ -119,6 +193,7 @@ function MovieList() {
                 <Input
                   type="text"
                   name="rating"
+                  value={rating}
                   {...bindRating}
                   placeholder="Select Age Film Rating"
                 />
