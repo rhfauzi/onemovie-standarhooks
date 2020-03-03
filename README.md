@@ -12,4 +12,24 @@ Uses Local Storage.
 - Custom Hooks untuk persisting state.
 
 ##**3**
-Implementasikan CRUD untuk data ProductionHouse
+CRUD untuk data ProductionHouse
+
+##**4**
+CRUD untuk data Movie dengan select field yang di ambil dari data productionHouse,
+tetapi untul list movie masih mengunakan productionHouse, belum di konver menjadi nama productionHouse
+
+##**5**
+desain mengunakan custom css, react strap, bootstrap, dan sweetalert2
+
+#
+
+# Hot to Use One Movie App
+
+##**1**
+git clone git@github.com:rhfauzi/onemovie-standarhooks.git
+
+##**2**
+yarn install
+
+##**3**
+yarn start
