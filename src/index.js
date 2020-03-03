@@ -1,22 +1,26 @@
 import React, { useContext, useReducer, Fragment } from "react";
 import ReactDOM from "react-dom";
-import { Container, Col, Row, Button } from "reactstrap";
+import { Container, Col, Row } from "reactstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import Store from "./context";
+import Store from "./context/productionHouse";
 import reducer from "./reducer";
 import NavBar from "./components/NavBar";
 
 import { usePersistedContext, usePersistedReducer } from "./usePersist";
 
-import TodoList from "./components/ProductionHouseList";
-import TodoForm from "./components/AddProductionHouse";
+import ProductionHouseList from "./components/ProductionHouseList";
+import AddProductionHouse from "./components/AddProductionHouse";
+import AddMovie from "./components/AddMovie";
 
 function App() {
-  const globalStore = usePersistedContext(useContext(Store), "productionHouse");
+  const storeProductionHouse = usePersistedContext(
+    useContext(Store),
+    "productionHouse"
+  );
 
   const [state, dispatch] = usePersistedReducer(
-    useReducer(reducer, globalStore),
+    useReducer(reducer, storeProductionHouse),
     "productionHouse"
   );
 
@@ -32,10 +36,10 @@ function App() {
                 <h3>Production House</h3>
               </Col>
               <Col md={4} sm={4} xs={6}>
-                <TodoForm />
+                <AddProductionHouse />
               </Col>
               <Col md={12} sm={12} xs={12} className="secound-menu">
-                <TodoList />
+                <ProductionHouseList />
               </Col>
             </Row>
           </Container>
@@ -48,9 +52,7 @@ function App() {
                 <h3>Movie List</h3>
               </Col>
               <Col md={4} sm={4} xs={6}>
-                <Button className="btn-movie float-right color-secondary">
-                  <b>+</b> Add Movie
-                </Button>
+                <AddMovie />
               </Col>
 
               <Col md={12} sm={12} xs={12} className="movie-box">

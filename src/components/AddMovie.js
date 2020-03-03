@@ -1,5 +1,4 @@
-import React, { useContext, useState } from "react";
-import Store from "../context/productionHouse";
+import React, { useState } from "react";
 import {
   Button,
   Modal,
@@ -11,47 +10,43 @@ import {
   Input
 } from "reactstrap";
 
-export default function AddProductionHouse() {
+export default function AddMovie() {
   const toggle = () => setModal(!modal);
   const [modal, setModal] = useState(false);
 
-  const { dispatch } = useContext(Store);
   const [name, setName] = useState("");
 
   function handleChange(e) {
     setName(e.target.value);
+    console.log("handleChange name", name);
   }
 
-  function handleAddProductionHouse() {
-    let oldData = JSON.parse(localStorage.getItem("productionHouse"));
-    let data = { id: oldData.data.length + 1, name: name };
-    // console.log("add data", data);
-
-    dispatch({
-      type: "ADD_PRODUCTION_HOUSE",
-      payload: data
-    });
-    setName("");
-    setModal(!modal);
+  function handleAddMovie() {
+    console.log("handleAddMovie");
   }
 
-  function handleSubmitForm(event) {
-    if (event.keyCode === 13) handleAddProductionHouse();
+  function handleSubmitForm() {
+    console.log("handleSubmitForm");
   }
 
   return (
     <div className="row">
-      <Button className="btn-movie float-right color-primary" onClick={toggle}>
-        <b>+</b> Add Production House
+      <Button
+        className="btn-movie float-right color-secondary"
+        onClick={toggle}
+      >
+        <b>+</b> Add Movie
       </Button>
 
       <Modal isOpen={modal} toggle={toggle}>
         <ModalHeader toggle={toggle} style={{ textAlign: "center" }}>
-          Add New Production House
+          Add New Movie
         </ModalHeader>
         <ModalBody>
           <FormGroup>
-            <Label>Production House Name</Label>
+            <Label>
+              Movie Name <b className="important">*</b>
+            </Label>
             <Input
               type="text"
               name="name"
@@ -59,7 +54,7 @@ export default function AddProductionHouse() {
               autoFocus={true}
               onKeyUp={handleSubmitForm}
               onChange={handleChange}
-              placeholder="Enter Production House Name"
+              placeholder="Enter Movie Name"
             />
           </FormGroup>
         </ModalBody>
@@ -67,11 +62,7 @@ export default function AddProductionHouse() {
           <Button outline color="secondary" onClick={toggle}>
             Cancel
           </Button>
-          <Button
-            color="secondary"
-            type="submit"
-            onClick={handleAddProductionHouse}
-          >
+          <Button color="secondary" type="submit" onClick={handleAddMovie}>
             Save Data
           </Button>
         </ModalFooter>
