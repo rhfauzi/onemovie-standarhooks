@@ -8480,13 +8480,12 @@ react-transition-group@^2.3.1:
     react-lifecycles-compat "^3.0.4"
 
 react@next:
-  version "0.0.0-d28bd2994"
-  resolved "https://registry.yarnpkg.com/react/-/react-0.0.0-d28bd2994.tgz#d2e544b03e38fc55cd1f68eb91c6d8863692fe25"
-  integrity sha512-WtXXhXya9ItxkLBifSJT6zyJRpj7zODkFahGG7uLC9kh7UehL8seip232iOgoFGq9yNl7bYtpj2mQ3x4gRnAWg==
+  version "17.0.0-rc.1"
+  resolved "https://registry.yarnpkg.com/react/-/react-17.0.0-rc.1.tgz#2f7575465517153dcd0d6a596f75f200c1612e2a"
+  integrity sha512-sQ7X+k3zwf6cFQu9pD6FFJMwHwoKAV+EKLWRW4rD1ruyRiFkmC09cjtqFySLtaZbUdzYEc8iy4uOwisJNlXytg==
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
-    prop-types "^15.6.2"
 
 reactstrap@^8.4.1:
   version "8.4.1"
