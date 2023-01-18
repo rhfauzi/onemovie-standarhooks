@@ -231,7 +231,7 @@ function MovieList() {
                   name="rating"
                   value={rating}
                   {...bindRating}
-                  placeholder="Select Age Film Rating"
+                  placeholder="Input Age Film Rating"
                 />
               </FormGroup>
             </Row>

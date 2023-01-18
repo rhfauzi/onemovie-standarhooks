@@ -78,6 +78,7 @@ export default function reducer(state, action) {
           item.id = action.payload.id;
           item.movie = action.payload.movie;
           item.genre = action.payload.genre;
+          item.rating = action.payload.rating;
           item.productionHouseId = action.payload.productionHouseId;
         }
         return item;
